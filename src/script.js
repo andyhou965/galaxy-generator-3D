@@ -7,7 +7,7 @@ import * as dat from "lil-gui";
  * Base
  */
 // Debug
-const gui = new dat.GUI({ width: 360 });
+const gui = new dat.GUI();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -19,13 +19,13 @@ const scene = new THREE.Scene();
  * Galaxy
  */
 const parameters = {};
-parameters.count = 100000;
-parameters.size = 0.01;
-parameters.radius = 8;
+parameters.count = 200000;
+parameters.size = 0.005;
+parameters.radius = 5;
 parameters.branches = 10;
 parameters.spin = 3;
-parameters.randomness = 0.4;
-parameters.randomnessPower = 4;
+parameters.randomness = 0.6;
+parameters.randomnessPower = 3;
 parameters.insideColor = "#ff6030";
 parameters.outsideColor = "#2e69ff";
 
