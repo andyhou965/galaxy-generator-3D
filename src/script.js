@@ -4,9 +4,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "lil-gui";
 
 /**
- * Base
+ * Add Control Panel
  */
-// Debug
 const gui = new dat.GUI();
 
 // Canvas
@@ -16,15 +15,15 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 /**
- * Galaxy
+ * Galaxy Generator
  */
 const parameters = {};
 parameters.count = 200000;
-parameters.size = 0.005;
-parameters.radius = 5;
+parameters.size = 0.0005;
+parameters.radius = 2;
 parameters.branches = 10;
-parameters.spin = 3;
-parameters.randomness = 0.6;
+parameters.spin = 4;
+parameters.randomness = 0.3;
 parameters.randomnessPower = 3;
 parameters.insideColor = "#ff6030";
 parameters.outsideColor = "#2e69ff";
@@ -70,7 +69,7 @@ const generateGalaxy = () => {
 			parameters.randomness *
 			radius;
 
-		// X, centered by - 0.5
+		// X
 		positions[i3 + 0] =
 			Math.cos(branchAngle + spinAngle) * radius + randomX;
 		// Y
@@ -110,20 +109,21 @@ const generateGalaxy = () => {
 
 generateGalaxy();
 
+// Add Parameters to Control Panel
 gui.add(parameters, "count")
 	.min(100)
 	.max(1000000)
 	.step(100)
 	.onFinishChange(generateGalaxy);
 gui.add(parameters, "size")
-	.min(0.001)
-	.max(0.1)
-	.step(0.001)
+	.min(0.0001)
+	.max(0.001)
+	.step(0.0001)
 	.onFinishChange(generateGalaxy);
 gui.add(parameters, "radius")
-	.min(0.01)
-	.max(20)
-	.step(0.01)
+	.min(1)
+	.max(10)
+	.step(1)
 	.onFinishChange(generateGalaxy);
 gui.add(parameters, "branches")
 	.min(2)
@@ -175,7 +175,7 @@ window.addEventListener("resize", () => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(
-	75,
+	50,
 	sizes.width / sizes.height,
 	0.1,
 	100
