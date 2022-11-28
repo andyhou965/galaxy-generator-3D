@@ -19,7 +19,7 @@ const scene = new THREE.Scene();
  */
 const parameters = {};
 parameters.count = 200000;
-parameters.size = 0.0005;
+parameters.size = 0.005;
 parameters.radius = 2;
 parameters.branches = 10;
 parameters.spin = 4;
@@ -116,9 +116,9 @@ gui.add(parameters, "count")
 	.step(100)
 	.onFinishChange(generateGalaxy);
 gui.add(parameters, "size")
-	.min(0.0001)
-	.max(0.001)
-	.step(0.0001)
+	.min(0.001)
+	.max(0.01)
+	.step(0.001)
 	.onFinishChange(generateGalaxy);
 gui.add(parameters, "radius")
 	.min(1)
